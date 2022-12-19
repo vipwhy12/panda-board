@@ -24,6 +24,7 @@ public class MemberRestController {
         System.out.println(body);
         Member member = new Member();
         log.info("success");
+        log.info("신난다");
         return ResponseEntity.status(HttpStatus.CREATED).body(member);
     }
 
