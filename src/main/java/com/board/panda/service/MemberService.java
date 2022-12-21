@@ -4,6 +4,7 @@ import com.board.panda.mapper.MemberMapper;
 import com.board.panda.model.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,16 +17,18 @@ import javax.servlet.http.HttpSession;
 public class MemberService {
     private final MemberMapper memberMapper;
 
-//    public ResponseEntity<Member> selectMember(Member member){
-//        log.info("test sineup");
-//        Member member
-//    }
+    public ResponseEntity<Member> insertMember(Member member) {
+        log.info("Insert Member Test");
 
-    //restAPI(회원가입)
-//    public ResponseBody<Member> selectMember(Member member, HttpSession session){
-//        log.info("select member");
-//        Member memberInfo = memberMapper.selectMember(member);
-//
-//
-//    }
+        System.out.println("==================");
+        System.out.println(member);
+
+        boolean memberInfo = memberMapper.insertMember(member);
+
+        System.out.println(memberInfo);
+
+        //ResponseEntity.status(HttpStatus.CREATED).body(member);
+        return ResponseEntity.ok().body(member);
+    }
+
 }
